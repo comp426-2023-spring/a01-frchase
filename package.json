@@ -18,5 +18,8 @@
   "homepage": "https://github.com/comp426-2023-spring/a01-frchase#readme",
   "dependencies": {
     "minimist": "^1.2.8"
+  },
+  "devDependencies": {
+    "@types/minimist": "^1.2.2"
   }
 }

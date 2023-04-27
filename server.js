@@ -1,10 +1,22 @@
+import http from 'http';
+import minimist from 'minimist';
 // Require http module
-
+var http = require('http');
 // Require fs module
-
+var fs = require('fs');
 // Require minimist module (make sure you install this one via npm).
-
+var argv = require('minimist')
 // Use minimist to process one argument `--port=` on the command line after `node server.js`.
+
+let arg = minimist(process.argv.slice(2), {
+    default: {
+        port: 3000
+    }
+})
+
+const port = args["port"]
+
+console.log(port)
 
 // Define a const `port` using the argument from the command line. 
 // Make this const default to port 3000 if there is no argument given for `--port`.

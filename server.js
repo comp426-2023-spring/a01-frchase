@@ -3,7 +3,7 @@ const http = require('http');
 // Require fs module
 const fs = require('fs');
 // Require minimist module (make sure you install this one via npm).
-const args = require('minimist');
+var args = require('minimist')
 // Use minimist to process one argument `--port=` on the command line after `node server.js`.
 
 // Define a const `port` using the argument from the command line. 
@@ -14,7 +14,7 @@ const args = require('minimist');
 // The function must read a file located at `./public/index.html` and do some stuff with it.
 // The stuff that should be inside this function is all below.
 
-let arg = minimist(process.argv.slice(2), {
+let arg = args(process.argv.slice(2), {
     default: {
         port: 3000
     }

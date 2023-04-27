@@ -1,9 +1,9 @@
 // Require http module
-const http = require('http');
+const arg_http = require('http');
 // Require fs module
-const fs = require('fs');
+const arg_fs = require('fs');
 // Require minimist module (make sure you install this one via npm).
-var args = require('minimist')
+const arg_minimist = require('minimist')
 // Use minimist to process one argument `--port=` on the command line after `node server.js`.
 
 // Define a const `port` using the argument from the command line. 
@@ -14,7 +14,7 @@ var args = require('minimist')
 // The function must read a file located at `./public/index.html` and do some stuff with it.
 // The stuff that should be inside this function is all below.
 
-let arg = args(process.argv.slice(2), {
+let arg = arg_minimist(process.argv.slice(2), {
     default: {
         port: 3000
     }
@@ -27,14 +27,24 @@ console.log(port);
 // If there is an error, put it on the console error and return. 
 // Do not be nice about exiting.
 
-fs.readFile('./public/index.html', 'utf8', (error, data) => {
+// Define a const `server` as an arrow function using http.createServer. 
+// Use the documentation for the node.js http module. 
+// The function should have three responses: 
+// 1. status code 200, 
+// 2. set a header with content type `text/html`, and 
+// 3. end with the data that you are reading in from ./public/index.html.
+
+// Start the `server` const listening on the port defined by argument in your `port` const. 
+// Put the exact message `Server listening on port ${port}` on the console log. 
+
+arg_fs.readFile('./public/index.html', 'utf8', (error, data) => {
     if(error) {
         console.error(error);
         return;
     }
     console.log(data);
 
-    const server = http.createServer((req, res) => {
+    const server = arg_http.createServer((req, res) => {
         res.statusCode = 200
         res.setHeader('Content-Type', 'text/html')
         res.end(data)
@@ -45,24 +55,5 @@ fs.readFile('./public/index.html', 'utf8', (error, data) => {
     })
 
 });
-
-
-
-// Define a const `server` as an arrow function using http.createServer. 
-// Use the documentation for the node.js http module. 
-// The function should have three responses: 
-// 1. status code 200, 
-// 2. set a header with content type `text/html`, and 
-// 3. end with the data that you are reading in from ./public/index.html.
-
-
-
-
-
-// Start the `server` const listening on the port defined by argument in your `port` const. 
-// Put the exact message `Server listening on port ${port}` on the console log. 
-
-
-
 
 // That's it! You're all done!

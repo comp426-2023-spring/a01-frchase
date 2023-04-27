@@ -1,11 +1,9 @@
-import http from 'http';
-import minimist from 'minimist';
 // Require http module
-var http = require('http');
+const http = require('http');
 // Require fs module
-var fs = require('fs');
+const fs = require('fs');
 // Require minimist module (make sure you install this one via npm).
-var argv = require('minimist');
+const args = require('minimist');
 // Use minimist to process one argument `--port=` on the command line after `node server.js`.
 
 // Define a const `port` using the argument from the command line. 
@@ -22,7 +20,7 @@ let arg = minimist(process.argv.slice(2), {
     }
 })
 
-const port = args["port"];
+const port = arg["port"];
 
 console.log(port);
 
@@ -45,7 +43,7 @@ fs.readFile('./public/index.html', 'utf8', (error, data) => {
     server.listen(port, () => {
         console.log(`Server listening on port ${port}`)
     })
-    
+
 });
 
 
